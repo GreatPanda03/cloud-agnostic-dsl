@@ -1,0 +1,26 @@
+resources:
+
+    - name: mainvpc
+      type: compute.v1.network
+      properties:
+        autoCreateSubnetworks: false
+
+    - name: frontend
+      type: compute.v1.subnetwork
+      properties:
+        region: europe-west2
+        network: $(ref.mainvpc.selfLink)
+        ipCidrRange: 10.0.1.0/24
+
+    - name: frontendserver
+      type: compute.v1.instance
+      properties:
+        zone: europe-west2-a
+        machineType: zones/europe-west2-a/machineTypes/e2-small
+        networkInterfaces:
+          - subnetwork: $(ref.frontend.selfLink)
+        disks:
+          - boot: true
+            autoDelete: true
+            initializeParams:
+              sourceImage: projects/debian-cloud/global/images/family/debian-13

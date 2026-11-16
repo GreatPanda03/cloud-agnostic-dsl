@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated cloudiac -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="cloudiac.presentation.CloudiacModelWizardID"
+            name="%_UI_CloudiacModelWizard_label"
+            class="cloudiac.presentation.CloudiacModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/CloudiacModelFile.gif">
+         <description>%_UI_CloudiacModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated cloudiac -->
+      <editor
+            id="cloudiac.presentation.CloudiacEditorID"
+            name="%_UI_CloudiacEditor_label"
+            icon="icons/full/obj16/CloudiacModelFile.gif"
+            extensions="cloudiac"
+            class="cloudiac.presentation.CloudiacEditor"
+            contributorClass="cloudiac.presentation.CloudiacActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

@@ -1,0 +1,71 @@
+...
+
+    DatabaseServer:
+        Type: AWS::EC2::Instance
+        Properties:
+            InstanceType: t2.micro
+            ImageId: ami-0c02fb55956c7d316
+            Tags:
+                - Key: Name
+                  Value: DatabaseServer
+                - Key: CPU
+                  Value: 8 cores
+                - Key: Memory
+                  Value: 32 GB
+
+    - type: storage.v1.bucket
+      name: UserUploads
+      properties:
+        location: europe-west2
+        versioning:
+          enabled: true
+        labels:
+          city: london
+
+    - name MainCluster
+      type: compute.v1.network
+      properties:
+        autoCreateSubnetworks: false
+        routingConfig:
+            routingMode: REGIONAL
+        description: MainCluster Networknull
+
+    db.internal.local:
+        Type: AWS::Route53::RecordSet
+        Properties:
+            Name: default
+            HostedZoneId: us-west-1a
+            Type: A
+            TTL: 1000
+            ResourceRecords:
+                - 10.0.3.0
+
+    api.internal.local:
+        Type: AWS::Route53::RecordSet
+        Properties:
+            Name: default
+            HostedZoneId: us-west-1a
+            Type: A
+            TTL: 1000
+            ResourceRecords:
+                - 10.0.3.0
+
+    Frontend:
+        Type: AWS::EC2::Subnet
+        Properties:
+            VpcId: ...
+            CidrBlock: 10.0.1.0/24
+            MapPublicIpOnLaunch: true
+            Tags:
+                - Key: Name
+                  Value: Frontend
+
+    Backend:
+        Type: AWS::EC2::Subnet
+        Properties:
+            VpcId: ...
+            CidrBlock: 10.0.2.0/24
+            MapPublicIpOnLaunch: true
+            Tags:
+                - Key: Name
+                  Value: Backend

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:cloudiac="http://www.example.org/cloudiac">
+  <!-- Sample instances for the cloudiac Ecore model -->
+
+  <!-- A compute instance -->
+  <cloudiac:ComputeInstance name="web-1" CPU="2" memoryGB="4" osImage="UBUNTU" instanceType="Small"/>
+
+  <!-- A network containing a subnet and a DNS record (containment) -->
+  <cloudiac:Network name="vpc1" cidr="10.0.0.0/16">
+    <cloudiac:dnsrecord hostname="api.example.com"/>
+    <cloudiac:subnet name="subnet-a" cidr="10.0.1.0/24"/>
+  </cloudiac:Network>
+
+  <!-- A storage bucket -->
+  <cloudiac:StorageBucket versioning="true"/>
+
+</xmi:XMI>

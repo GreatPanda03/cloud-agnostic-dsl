@@ -1,0 +1,69 @@
+define infrastructure on aws {
+    
+    configure network MainCluster {
+    
+	    vpc MainVPC {
+	        address space "10.0.0.0/16"
+	        subnets {
+	            Frontend
+	             in vpc MainVPC
+	             hosted in london
+	             properties {
+	             	range "10.0.1.0/24"
+	             }
+	             
+ 	            Backend
+	             in vpc MainVPC
+	             hosted in london
+	             properties {
+	             	range "10.0.3.0/24"
+	             }
+	    	}
+	    }
+	
+	    hostedzone CloudiacZone {
+	    	domain "cloudiac.com"
+	    }
+    }
+    
+    bucket UserUploadsCloudiac hosted in london {}
+	
+    vm DatabaseServer running on amazon-linux
+     in network MainCluster 
+     in vpc MainVPC
+     hosted in london
+     subnet Backend
+     type small  {
+        specifications {
+            cpu: 8 cores
+            memory: 32 GB
+        }
+    }
+    
+    vm FrontEndServer running on amazon-linux
+     in network MainCluster 
+     in vpc MainVPC
+     hosted in london
+     subnet Frontend
+     type small  {
+        specifications {
+            cpu: 8 cores
+            memory: 32 GB
+        }
+    }
+    
+    vm BackEndServer running on amazon-linux
+     in network MainCluster 
+     in vpc MainVPC
+     hosted in london
+     subnet Backend
+     type small  {
+        specifications {
+            cpu: 8 cores
+            memory: 32 GB
+        }
+    }
+
+}
+
+

@@ -1,0 +1,51 @@
+Resources:
+
+    MainVPC:
+        Type: AWS::EC2::VPC
+        Properties:
+            CidrBlock: 10.0.0.0/16
+
+    Frontend:
+        Type: AWS::EC2::Subnet
+        Properties:
+            VpcId: !Ref MainVPC
+            CidrBlock: 10.0.1.0/24
+
+    Backend:
+        Type: AWS::EC2::Subnet
+        Properties:
+            VpcId: !Ref MainVPC
+            CidrBlock: 10.0.3.0/24
+
+    CloudiacZone:
+        Type: AWS::Route53::HostedZone
+        Properties:
+            Name: cloudiac.com
+
+    UserUploadsCloudiac:
+        Type: AWS::S3::Bucket
+        Properties:
+            BucketName: useruploadscloudiac-1
+            VersioningConfiguration:
+                Status: Suspended
+
+    DatabaseServer:
+        Type: AWS::EC2::Instance
+        Properties:
+            InstanceType: t3.micro
+            SubnetId: !Ref Backend
+            ImageId: ami-099400d52583dd8c4
+
+    FrontEndServer:
+        Type: AWS::EC2::Instance
+        Properties:
+            InstanceType: t3.micro
+            SubnetId: !Ref Frontend
+            ImageId: ami-099400d52583dd8c4
+
+    BackEndServer:
+        Type: AWS::EC2::Instance
+        Properties:
+            InstanceType: t3.micro
+            SubnetId: !Ref Backend
+            ImageId: ami-099400d52583dd8c4

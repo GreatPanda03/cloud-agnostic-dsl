@@ -1,0 +1,42 @@
+These are a list of steps to set up a Google Cloud Platform account with a project, then run a deployment file to prepare all cloud resources.
+
+
+===== Setting Up a Google Cloud Project =====
+
+1. Create a Google account
+
+2. Sign into Google Cloud console with the Google account
+
+3. Start a free trial (you'll need to assign a billing account - this uses free credit and you won't be charged, even when it runs out!)
+
+4. Install "gcloud" commands - you may be taken through a wizard which will help set up your project, like its region / zone
+
+5. Run "gcloud init" and follow the setup procedure
+
+6. Run "gcloud config get-value project" to see your current project (should be the default one)
+
+
+===== Enabling Required APIs =====
+
+7. Enable compute with "gcloud services enable compute.googleapis.com"
+* enables: compute.v1.network, compute.v1.subnetwork, compute.v1.instance
+
+8. Enable managed zones and records sets with "gcloud services enable dns.googleapis.com"
+* enables: dns.v1.managedZone, dns.v1.resourceRecordSet
+
+9. Enable buckets with "gcloud services enable storage.googleapis.com"
+* enables: storage.v1.bucket
+
+10. Enable GCP deployment manager with "gcloud services enable deploymentmanager.googleapis.com"
+
+11. Verify all enabled services with "gcloud services list --enabled"
+
+
+===== Deployment & Cleanup =====
+
+12. CD to the deployment file and run it with "gcloud deployment-manager deployments create cloudiac-test --config [YAML_FILE_NAME].yaml"
+
+13. To view all resources, run "gcloud deployment-manager deployments describe cloudiac-test" (this likely will be displayed with Step 13 anyway)
+
+14. To clean up the deployment, run "gcloud deployment-manager deployments delete cloudiac-test"
+

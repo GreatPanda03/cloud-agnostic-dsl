@@ -1,0 +1,71 @@
+grammar co7217.week18.entity.EntityDsl with org.eclipse.xtext.common.Terminals
+generate entityDsl "http://www.week18.co7217/entity/EntityDsl"
+
+
+Infrastructure:
+    'define' 'infrastructure' 'on' cloudProvider=CloudProvider '{'
+        (resources+=Resource)* '}';
+
+Resource:
+    ComputeInstance | StorageBucket | Network | VPC | Subnet | HostedZone;
+
+ComputeInstance:
+    'vm' name=ID 
+    'running' 'on' osImage=OSImage
+    'in' 'network' network=[Network]
+    'in' 'vpc' vpc=[VPC]
+    'hosted' 'in' region=Region
+    'subnet' subnet=[Subnet]
+    'type' instanceType=InstanceType '{'
+        'specifications' '{'
+            'cpu' ':' CPU=INT 'cores'
+            'memory' ':' memoryGB=INT 'GB'
+        '}'
+    '}';
+
+StorageBucket:
+    'bucket' name=ID 'hosted' 'in' region=Region '{'
+        ('enable')? (versioning?='versioning')? 
+    '}';
+
+
+Network:
+    'configure' 'network' name=ID '{'
+        (vpcs+=VPC | zones+=HostedZone)*
+    '}';   
+    
+
+VPC:
+    'vpc' name=ID '{'
+        'address' 'space' cidr=STRING
+        ('subnets' '{' (subnets+=Subnet)* '}')?
+    '}';
+
+    
+HostedZone:
+    'hostedzone' name=ID '{'
+        'domain' domain=STRING
+    '}';
+
+Subnet:
+    name=ID
+    'in' 'vpc' vpc = [VPC]
+    'hosted' 'in' region=Region
+    'properties' '{'
+    	'range' cidr=STRING
+    '}';
+
+
+//Enum Types
+enum CloudProvider:
+    AWS = 'aws' | GCP = 'gcp';
+
+enum OSImage:
+    UBUNTU = 'ubuntu' | AMAZON_LINUX = 'amazon-linux' | WINDOWS = 'windows';
+
+enum InstanceType:
+    Small = 'small' | Medium = 'medium' | Large = 'large';
+
+enum Region:
+    London = 'london' | Manchester = 'manchester' | 
+    Birmingham = 'birmingham' | Edinburgh = 'edinburgh';

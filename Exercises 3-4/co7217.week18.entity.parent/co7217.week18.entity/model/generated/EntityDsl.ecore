@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="entityDsl" nsURI="http://www.week18.co7217/entity/EntityDsl"
+    nsPrefix="entityDsl">
+  <eClassifiers xsi:type="ecore:EClass" name="Infrastructure">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cloudProvider" eType="#//CloudProvider"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resources" upperBound="-1"
+        eType="#//Resource" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Resource">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ComputeInstance" eSuperTypes="#//Resource">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="osImage" eType="#//OSImage"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="network" eType="#//Network"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="vpc" eType="#//VPC"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="region" eType="#//Region"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subnet" eType="#//Subnet"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceType" eType="#//InstanceType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="CPU" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="memoryGB" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StorageBucket" eSuperTypes="#//Resource">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="region" eType="#//Region"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="versioning" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Network" eSuperTypes="#//Resource">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="vpcs" upperBound="-1" eType="#//VPC"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="zones" upperBound="-1"
+        eType="#//HostedZone" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VPC" eSuperTypes="#//Resource">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cidr" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subnets" upperBound="-1"
+        eType="#//Subnet" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HostedZone" eSuperTypes="#//Resource">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="domain" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Subnet" eSuperTypes="#//Resource">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="vpc" eType="#//VPC"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="region" eType="#//Region"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cidr" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CloudProvider">
+    <eLiterals name="AWS" literal="aws"/>
+    <eLiterals name="GCP" value="1" literal="gcp"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="OSImage">
+    <eLiterals name="UBUNTU" literal="ubuntu"/>
+    <eLiterals name="AMAZON_LINUX" value="1" literal="amazon-linux"/>
+    <eLiterals name="WINDOWS" value="2" literal="windows"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="InstanceType">
+    <eLiterals name="Small" literal="small"/>
+    <eLiterals name="Medium" value="1" literal="medium"/>
+    <eLiterals name="Large" value="2" literal="large"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Region">
+    <eLiterals name="London" literal="london"/>
+    <eLiterals name="Manchester" value="1" literal="manchester"/>
+    <eLiterals name="Birmingham" value="2" literal="birmingham"/>
+    <eLiterals name="Edinburgh" value="3" literal="edinburgh"/>
+  </eClassifiers>
+</ecore:EPackage>

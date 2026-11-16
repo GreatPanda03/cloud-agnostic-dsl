@@ -1,0 +1,253 @@
+/**
+ */
+package cloudiac;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import org.eclipse.emf.common.util.Enumerator;
+
+/**
+ * <!-- begin-user-doc -->
+ * A representation of the literals of the enumeration '<em><b>Region</b></em>',
+ * and utility methods for working with them.
+ * <!-- end-user-doc -->
+ * @see cloudiac.CloudiacPackage#getRegion()
+ * @model
+ * @generated
+ */
+public enum Region implements Enumerator {
+	/**
+	 * The '<em><b>London</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #LONDON_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	LONDON(0, "London", "London"),
+
+	/**
+	 * The '<em><b>Manchester</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #MANCHESTER_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	MANCHESTER(1, "Manchester", "Manchester"),
+
+	/**
+	 * The '<em><b>Birmingham</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #BIRMINGHAM_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	BIRMINGHAM(2, "Birmingham", "Birmingham"),
+
+	/**
+	 * The '<em><b>Edinburgh</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #EDINBURGH_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	EDINBURGH(3, "Edinburgh", "Edinburgh");
+
+	/**
+	 * The '<em><b>London</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #LONDON
+	 * @model name="London"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int LONDON_VALUE = 0;
+
+	/**
+	 * The '<em><b>Manchester</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #MANCHESTER
+	 * @model name="Manchester"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MANCHESTER_VALUE = 1;
+
+	/**
+	 * The '<em><b>Birmingham</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #BIRMINGHAM
+	 * @model name="Birmingham"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int BIRMINGHAM_VALUE = 2;
+
+	/**
+	 * The '<em><b>Edinburgh</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #EDINBURGH
+	 * @model name="Edinburgh"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int EDINBURGH_VALUE = 3;
+
+	/**
+	 * An array of all the '<em><b>Region</b></em>' enumerators.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private static final Region[] VALUES_ARRAY = new Region[] { LONDON, MANCHESTER, BIRMINGHAM, EDINBURGH, };
+
+	/**
+	 * A public read-only list of all the '<em><b>Region</b></em>' enumerators.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final List<Region> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+
+	/**
+	 * Returns the '<em><b>Region</b></em>' literal with the specified literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
+	 * @generated
+	 */
+	public static Region get(String literal) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			Region result = VALUES_ARRAY[i];
+			if (result.toString().equals(literal)) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the '<em><b>Region</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
+	 * @generated
+	 */
+	public static Region getByName(String name) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			Region result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the '<em><b>Region</b></em>' literal with the specified integer value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
+	 * @generated
+	 */
+	public static Region get(int value) {
+		switch (value) {
+		case LONDON_VALUE:
+			return LONDON;
+		case MANCHESTER_VALUE:
+			return MANCHESTER;
+		case BIRMINGHAM_VALUE:
+			return BIRMINGHAM;
+		case EDINBURGH_VALUE:
+			return EDINBURGH;
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
+
+	/**
+	 * Only this class can construct instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private Region(int value, String name, String literal) {
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int getValue() {
+		return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getLiteral() {
+		return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
+	}
+
+} //Region

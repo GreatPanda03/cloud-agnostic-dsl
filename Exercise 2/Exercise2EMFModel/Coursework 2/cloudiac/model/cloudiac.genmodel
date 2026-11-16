@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/cloudiac/src-gen" creationIcons="false" editDirectory="/cloudiac.edit/src-gen"
+    editorDirectory="/cloudiac.editor/src-gen" modelPluginID="cloudiac" modelName="Cloudiac"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" codeFormatting="true"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="21.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>cloudiac.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Cloudiac" disposableProviderFactory="true" ecorePackage="cloudiac.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="cloudiac.ecore#//OSImage">
+      <genEnumLiterals ecoreEnumLiteral="cloudiac.ecore#//OSImage/UBUNTU"/>
+      <genEnumLiterals ecoreEnumLiteral="cloudiac.ecore#//OSImage/AMAZON_LINUX"/>
+      <genEnumLiterals ecoreEnumLiteral="cloudiac.ecore#//OSImage/WINDOWS"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="cloudiac.ecore#//InstanceType">
+      <genEnumLiterals ecoreEnumLiteral="cloudiac.ecore#//InstanceType/Small"/>
+      <genEnumLiterals ecoreEnumLiteral="cloudiac.ecore#//InstanceType/Medium"/>
+      <genEnumLiterals ecoreEnumLiteral="cloudiac.ecore#//InstanceType/Large"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="cloudiac.ecore#//CloudProvider">
+      <genEnumLiterals ecoreEnumLiteral="cloudiac.ecore#//CloudProvider/AWS"/>
+      <genEnumLiterals ecoreEnumLiteral="cloudiac.ecore#//CloudProvider/GCP"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="cloudiac.ecore#//Region">
+      <genEnumLiterals ecoreEnumLiteral="cloudiac.ecore#//Region/London"/>
+      <genEnumLiterals ecoreEnumLiteral="cloudiac.ecore#//Region/Manchester"/>
+      <genEnumLiterals ecoreEnumLiteral="cloudiac.ecore#//Region/Birmingham"/>
+      <genEnumLiterals ecoreEnumLiteral="cloudiac.ecore#//Region/Edinburgh"/>
+    </genEnums>
+    <genClasses image="false" ecoreClass="cloudiac.ecore#//Resource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cloudiac.ecore#//Resource/name"/>
+    </genClasses>
+    <genClasses ecoreClass="cloudiac.ecore#//ComputeInstance">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cloudiac.ecore#//ComputeInstance/CPU"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cloudiac.ecore#//ComputeInstance/memoryGB"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cloudiac.ecore#//ComputeInstance/osImage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cloudiac.ecore#//ComputeInstance/instanceType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cloudiac.ecore#//ComputeInstance/region"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cloudiac.ecore#//ComputeInstance/subnet"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cloudiac.ecore#//ComputeInstance/vpc"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cloudiac.ecore#//ComputeInstance/network"/>
+    </genClasses>
+    <genClasses ecoreClass="cloudiac.ecore#//StorageBucket">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cloudiac.ecore#//StorageBucket/versioning"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cloudiac.ecore#//StorageBucket/region"/>
+    </genClasses>
+    <genClasses ecoreClass="cloudiac.ecore#//Network">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cloudiac.ecore#//Network/cidr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cloudiac.ecore#//Network/vpc"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cloudiac.ecore#//Network/hostedzone"/>
+    </genClasses>
+    <genClasses ecoreClass="cloudiac.ecore#//VPC">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cloudiac.ecore#//VPC/cidr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cloudiac.ecore#//VPC/subnet"/>
+    </genClasses>
+    <genClasses ecoreClass="cloudiac.ecore#//HostedZone">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cloudiac.ecore#//HostedZone/domain"/>
+    </genClasses>
+    <genClasses ecoreClass="cloudiac.ecore#//Infrastructure">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cloudiac.ecore#//Infrastructure/cloudProvider"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cloudiac.ecore#//Infrastructure/resource"/>
+    </genClasses>
+    <genClasses ecoreClass="cloudiac.ecore#//Subnet">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cloudiac.ecore#//Subnet/cidr"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cloudiac.ecore#//Subnet/region"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
